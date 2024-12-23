@@ -362,7 +362,7 @@ bool check_expression(char *str)
     //char str[size_str] = "(2 (+ (8 )* a))";//uncorrect
     //char str[size_str] = "(2) - (2)/(4(*3) ))";//uncorrect
     //char str[size_str] = "  (+2 - ((-2) / h ) + (a /  (-2)))";//correct
-    char str[size_str] = "((c-d)*h+1)*(a+b)";//correct
+    //char str[size_str] = "((c-d)*h+1)*(a+b)";//correct
     //char str[size_str] = "b * a * 8 + 1 + a * ";//uncorrect
     //char str[size_str] = "b * a ++ a";//uncorrect
     //char str[size_str] = "-2 + 1";//uncorrect
