@@ -336,7 +336,7 @@ bool check_expression(char *str)
     }
 
     // Проверка итоговой лексемы
-    if (chek_lexem(&st) == false)
+    if (CheckLexeme(&st) == false)
         return false;
 
     // Если после обработки всех символов в стеке нет элементов, выражение корректно
