@@ -284,10 +284,6 @@ bool check_expression(char *str)
             if (str[i + 1] == '(')
                 return false;  // Неправильное расположение скобок
 
-            // Печать стека для отладки
-            printf("======================\n");
-            print_stack(st);
-            printf("======================\n");
 
             char tmp;
             int pos = 0;
@@ -324,10 +320,6 @@ bool check_expression(char *str)
             pop(&st);  // Убираем открывающую скобку из стека
             push(&st, 'L');  // Добавляем временный элемент (для обозначения конца скобочного выражения)
 
-            // Печать стека для отладки
-            printf("======================\n");
-            print_stack(st);
-            printf("======================\n");
         }
 
         // Пропуск пробелов
@@ -339,10 +331,6 @@ bool check_expression(char *str)
 
             push(&st, str[i]);  // Добавляем текущий символ в стек
 
-            // Печать стека для отладки
-            printf("======================\n");
-            print_stack(st);
-            printf("======================\n");
         }    
         i++;  // Переход к следующему символу
     }
@@ -350,11 +338,6 @@ bool check_expression(char *str)
     // Проверка итоговой лексемы
     if (chek_lexem(&st) == false)
         return false;
-
-    // Печать стека для отладки
-    printf("======================\n");
-    print_stack(st);
-    printf("======================\n");
 
     // Если после обработки всех символов в стеке нет элементов, выражение корректно
     return st.size == 0;
@@ -364,25 +347,30 @@ bool check_expression(char *str)
  
 Я рассмотрел всевозможные случаи выражений, которые могут встретиться, они могут быть как коректны, так и нет
 ```C
-//char *str = ""; // Некорректно
-//char *str = "(-1)()"; // Некорректно
-//char *str = "a + c * ()"; // Некорректно
-//char *str = "((-2) - 2)"; // Корректно
-//char *str = "( +9 - ((-1) / a ) + (c /  (-3)))"; // Корректно
-//char *str = "(a + (b**Z) - 3)"; // Некорректно
-//char *str = "((a + 1) / Z) - 9"; // Корректно
-//char *str = "+1"; // Некорректно
-//char *str = "()"; // Некорректно
-//char *str = "(-6)"; // Корректно
-//char *str = "(+6)"; // Корректно
-//char *str = "(+1 - (-2 - (-3 - (-4 - (-5 - 6)))))"; // Корректно
-//char *str = "(-1 - (-2 - (-3 - (-4 - (-5 - 6)))))"; // Корректно
-//char *str = "(-1 - (-2 - (3 - 4) - 4) - 5)"; // Корректно
-//char *str = "1 - (-1) - (-3)"; // Корректно
-//char *str = "1 - (-1) - (-3)"; // Корректно
-//char *str = "1 - - - 3"; // Некорректно
-//char *str = "-3"; // Корректно
-//char *str = "a + b * c / 1 - 9"; // Корректно
+    //char str[size_str] = "";//uncorrect
+    //char str[size_str] = "()";//uncorrect
+    //char str[size_str] = "(+8)";// correct
+    //char str[size_str] = "(+f)";// correct
+    //char str[size_str] = "(+k)";// correct
+    //char str[size_str] = "(-d)";//correct
+    //char str[size_str] = "(-8)";//correc
+    //char str[size_str] = " (     +8)";// correct
+    //char str[size_str] = "(-1) * ()";//uuncorrect
+    //char str[size_str] = "(-1)(-2)";//uncorrect
+    //char str[size_str] = "1* (-5)*(-5)";//correct
+    //char str[size_str] = "(2 + (8 * a))";//correct
+    //char str[size_str] = "(2 (+ (8 )* a))";//uncorrect
+    //char str[size_str] = "(2) - (2)/(4(*3) ))";//uncorrect
+    //char str[size_str] = "  (+2 - ((-2) / h ) + (a /  (-2)))";//correct
+    char str[size_str] = "((c-d)*h+1)*(a+b)";//correct
+    //char str[size_str] = "b * a * 8 + 1 + a * ";//uncorrect
+    //char str[size_str] = "b * a ++ a";//uncorrect
+    //char str[size_str] = "-2 + 1";//uncorrect
+    //char str[size_str] = "2 + (1)";//correct
+    //char str[size_str] = "(2 - 1 / (8/2))";//correct
+    //char str[size_str] = "(((-2)-2)-2)";//correct
+    //char str[size_str] = "((c + d) * e + 1) * (a + b))))";//uncorrect
+    //char str[size_str] = "(a+(b**c) - 8)";//uncorrect
 ```
 
 Выше приведены различные ситуации, которые могут быть найдены и проверены при помощи нашего проекта
