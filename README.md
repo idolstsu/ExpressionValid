@@ -137,7 +137,7 @@ bool ShowTop(stek *st, char *data)
 
 4. PrintStack - вывод стека
 ```C
-void print_stack(stek st)
+void PrintStack(stek st)
 {
     if (st.top == NULL)  // Если стек пуст (указатель на верхний элемент равен NULL)
     {
@@ -176,7 +176,7 @@ bool isEmpty(stek st)
 
 6. DeleteStack - удаление стека полностью
 ```C
-void delStek(stek *st)
+void DeleteStack(stek *st)
 {
     if (st)  // Проверяем, что указатель на стек не равен NULL
     {
@@ -211,7 +211,7 @@ void delStek(stek *st)
  Функция CheckLexeme предназначена для проверки корректности последовательности символов в стеке, который представляет собой выражение, состоящее из операндов (например, цифр или букв) и операторов (например, +, -, *, /).
 
 ```C
-bool chek_lexem(stek *st)
+bool CheckLexeme(stek *st)
 {
     // Проверка, инициализирован ли стек (не равен NULL)
     if (st == NULL)
